@@ -1,19 +1,79 @@
-# Your Project Name
+# Thermin Digital Pro
 
 | | |
 |-|-|
-|`Author` | Your full name
+|`Author` | Catana Mihai-Laurentiu
 
 ## Description
+Theremin Numérique Pro est un instrument de musique numérique sans contact physique. L'utilisateur contrôle la hauteur et le volume du son en déplaçant ses mains au-dessus de deux capteurs à ultrasons, sans aucun contact physique. La main gauche contrôle la note musicale (Do, Ré, Mi...), tandis que la main droite contrôle le volume. Un potentiomètre permet de changer d'octave, et deux boutons offrent les fonctions de sourdine et de changement de mode. La note actuelle et le volume sont affichés en temps réel sur un écran OLED, et des LEDs RGB fournissent un retour visuel synchronisé avec le son.
 
 ## Motivation
-
+J'ai toujours été fasciné par la musique et l'électronique. Ce projet me permet de combiner ces deux passions en créant un instrument que l'on joue sans le toucher — une idée qui me semblait presque magique avant de comprendre comment la réaliser. 
 ## Architecture
+```
+[HC-SR04 Gauche] ──← note musicale
+      │
+      ▼
+[ESP32 DevKit V1]
+      │
+      ├──← [HC-SR04 Droite]
+      │         volume
+      │
+      ├──← [Potentiomètre 10kΩ]
+      │         sélection octave (ADC)
+      │
+      ├──← [Bouton 1]
+      │         sourdine (interruption matérielle)
+      │
+      ├──← [Bouton 2]
+      │         changement de mode (interruption matérielle)
+      │
+      ├──→ [OLED SSD1306]
+      │         note actuelle + barre de volume (I2C)
+      │
+      ├──→ [PAM8403 + Haut-parleur 3W]
+      │         sortie audio (PWM)
+      │
+      └──→ [NeoPixel x8]
+                couleur synchronisée avec la note
+```
+Le système est composé de plusieurs modules :
 
+Module de contrôle : ESP32 DevKit V1
+Module de détection pitch : HC-SR04 Gauche (distance main → note musicale)
+Module de détection volume : HC-SR04 Droite (distance main → volume)
+Module de sélection : potentiomètre 10kΩ (sélection de l'octave via ADC)
+Module d'affichage : écran OLED SSD1306 (note actuelle + barre de volume via I2C)
+Module audio : amplificateur PAM8403 + haut-parleur 3W (sortie audio via PWM)
+Module visuel : bande NeoPixel x8 (couleur synchronisée avec la note)
+Module interaction : 2 boutons poussoirs (sourdine + changement de mode via interruptions matérielles)
+
+Le processus de fonctionnement est le suivant :
+
+Lecture de la distance de la main gauche via HC-SR04 Gauche.
+Conversion de la distance en fréquence musicale (Do, Ré, Mi...).
+Lecture de la distance de la main droite via HC-SR04 Droite.
+Conversion de la distance en niveau de volume.
+Lecture du potentiomètre via ADC pour déterminer l'octave active.
+Génération du signal audio via PWM vers le module PAM8403.
+Mise à jour en temps réel de l'écran OLED :
+
+note musicale actuelle,
+barre de volume.
+
+
+Mise à jour de la couleur des LEDs NeoPixel selon la note jouée.
+
+Le système propose deux modes de jeu :
+
+Free Play — fréquence continue et variable selon la distance exacte,
+Quantized — le son se verrouille sur la note musicale la plus proche (Do, Ré, Mi, Fa, Sol, La, Si).
+
+Les boutons déclenchent des interruptions matérielles pour une réponse instantanée, sans délai lié à la boucle principale du programme.
 ### Block diagram
 
 <!-- Make sure the path to the picture is correct -->
-![Block Diagram](schematics/block_diagram.png)
+![Block Diagram](theremin_block_diagram.svg)
 
 ### Schematic
 
