@@ -1,4 +1,4 @@
-# Thermin Digital Pro
+# Theremin Digital Pro
 
 | | |
 |-|-|
