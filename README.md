@@ -5,7 +5,7 @@
 |`Author` | Catana Mihai-Laurentiu
 
 ## Description
-Theremin Numérique Pro est un instrument de musique numérique sans contact physique. L'utilisateur contrôle la hauteur et le volume du son en déplaçant ses mains au-dessus de deux capteurs à ultrasons, sans aucun contact physique. La main gauche contrôle la note musicale (Do, Ré, Mi...), tandis que la main droite contrôle le volume. Un potentiomètre permet de changer d'octave, et deux boutons offrent les fonctions de sourdine et de changement de mode. La note actuelle et le volume sont affichés en temps réel sur un écran OLED, et des LEDs RGB fournissent un retour visuel synchronisé avec le son.
+Theremin Digital Pro est un instrument de musique numérique sans contact physique. L'utilisateur contrôle la hauteur et le volume du son en déplaçant ses mains au-dessus de deux capteurs à ultrasons, sans aucun contact physique. La main gauche contrôle la note musicale (Do, Ré, Mi...), tandis que la main droite contrôle le volume. Un potentiomètre permet de changer d'octave, et deux boutons offrent les fonctions de sourdine et de changement de mode. La note actuelle et le volume sont affichés en temps réel sur un écran OLED, et des LEDs RGB fournissent un retour visuel synchronisé avec le son.
 
 ## Motivation
 J'ai toujours été fasciné par la musique et l'électronique. Ce projet me permet de combiner ces deux passions en créant un instrument que l'on joue sans le toucher — une idée qui me semblait presque magique avant de comprendre comment la réaliser. 
