@@ -84,7 +84,6 @@ Les boutons déclenchent des interruptions matérielles pour une réponse instan
 
 <!-- This is just an example, fill in with your actual components -->
 
-### Components
 
 | Device | Usage | Price |
 |--------|--------|-------|
