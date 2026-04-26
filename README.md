@@ -77,29 +77,44 @@ Les boutons déclenchent des interruptions matérielles pour une réponse instan
 
 ### Schematic
 
-![Schematic](schematics/kicad_schematic.png)
+![Schematic](theremin_wiring_schematic.svg)
 
 ### Components
 
 
 <!-- This is just an example, fill in with your actual components -->
 
+### Components
+
 | Device | Usage | Price |
 |--------|--------|-------|
-| Activ Buzzer | Buzzer | [1.5 RON](https://www.optimusdigital.ro/ro/audio-buzzere/635-buzzer-activ-de-3-v.html?search_query=buzzer&results=61) |
-| Push Button | Button | [1 RON](https://www.optimusdigital.ro/ro/butoane-i-comutatoare/1119-buton-6x6x6.html?search_query=buton&results=222) |
-| Jumper Wires | Connecting components | [7 RON](https://www.optimusdigital.ro/ro/fire-fire-mufate/884-set-fire-tata-tata-40p-10-cm.html?search_query=set+fire&results=110) |
-| Breadboard | Project board | [10 RON](https://www.optimusdigital.ro/ro/prototipare-breadboard-uri/8-breadboard-830-points.html?search_query=breadboard&results=145) |
+| ESP32 DevKit V1 | Microcontrôleur principal | ~35 RON |
+| Capteur à ultrasons HC-SR04 (x2) | Contrôle note (main gauche) + volume (main droite) | ~20 RON |
+| Écran OLED SSD1306 0.96" I2C | Affiche note actuelle + barre de volume | ~20 RON |
+| Module Amplificateur PAM8403 | Amplification audio | ~10 RON |
+| Haut-parleur 3W 4Ω | Sortie audio | ~10 RON |
+| Bande LED RGB NeoPixel (8 LEDs) | Retour visuel - couleur change selon la note | ~15 RON |
+| Potentiomètre 10kΩ | Sélection de l'octave via ADC | ~3 RON |
+| Bouton poussoir (x2) | Sourdine + changement de mode avec interruptions | ~2 RON |
+| Résistances 10kΩ (x2) | Pull-up boutons | ~1 RON |
+| Résistances 220Ω | Protection LED | ~1 RON |
+| Breadboard 830 points | Prototypage | ~10 RON |
+| Fils de connexion | Connexion des composants | ~7 RON |
+| Câble USB | Alimentation + programmation ESP32 | ~5 RON |
+
+**Total: ~139 RON**
 
 ### Libraries
 
 <!-- This is just an example, fill in the table with your actual components -->
-
 | Library | Description | Usage |
 |---------|-------------|-------|
-| [lib-name1](link-to-lib) | official description of the lib | Used for accesing the peripherals of the microcontroller  |
-| [lib-name2](link-to-lib) | official description of the lib | Used for accesing the peripherals of the microcontroller  |
-
+| [Adafruit SSD1306](https://github.com/adafruit/Adafruit_SSD1306) | Pilote pour écrans OLED SSD1306 | Affichage note + volume via I2C |
+| [Adafruit GFX](https://github.com/adafruit/Adafruit-GFX-Library) | Bibliothèque graphique | Rendu texte et graphiques sur OLED |
+| [Adafruit NeoPixel](https://github.com/adafruit/Adafruit_NeoPixel) | Pilote pour LEDs RGB WS2812 | Contrôle couleur NeoPixel selon la note |
+| [Wire](https://www.arduino.cc/reference/en/language/functions/communication/wire/) | Communication I2C | Connexion OLED SSD1306 |
+| [ESP32 Arduino Core](https://github.com/espressif/arduino-esp32) | Support ESP32 pour Arduino IDE | PWM audio, ADC, interruptions, GPIO |
+| [Arduino](https://www.arduino.cc/) | Bibliothèque de base Arduino | Fonctions de base tone(), analogRead() |
 ## Log
 
 <!-- write every week your progress here -->
@@ -115,8 +130,3 @@ Les boutons déclenchent des interruptions matérielles pour une réponse instan
 
 <!-- Fill in with appropriate links and link titles -->
 
-[Tutorial 1](https://www.youtube.com/watch?v=wdgULBpRoXk&t=1s&ab_channel=BenEater)
-
-[Article 1](https://www.explainthatstuff.com/induction-motors.html)
-
-[Link title](https://projecthub.arduino.cc/)
